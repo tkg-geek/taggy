@@ -20,7 +20,6 @@ if (!$post) {
 
 include '../includes/header.php';
 ?>
-
 <h2>Post Details</h2>
 <div>
     <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
@@ -28,39 +27,49 @@ include '../includes/header.php';
     <p>Posted by: <?= htmlspecialchars($post['username']) ?></p>
 </div>
 
-<!-- NFCタグ書き込みボタン -->
+<!-- NFC書き込みボタン -->
 <div>
-    <input type="hidden" id="nfcData" value="<?= "https://tkgeek.sakura.ne.jp/taggy/public/post.php?id=" . htmlspecialchars($post['id']) ?>">
-    <button onclick="writeToNFCTag()">NFCタグに書き込む</button>
-    <div id="status" style="color: green; margin-top: 10px;"></div>
+    <button id="writeNFCButton">Write to NFC Tag</button>
+    <p id="nfcStatus"> </p>
 </div>
 
 <script>
-    async function writeToNFCTag() {
-        const dataInput = document.getElementById('nfcData');
-        const statusDiv = document.getElementById('status');
+    document.getElementById('writeNFCButton').addEventListener('click', async () => {
+        const status = document.getElementById('nfcStatus');
+        status.textContent = 'Taggyタグにタッチして下さい';
 
         if ('NDEFReader' in window) {
             try {
                 const ndef = new NDEFReader();
                 await ndef.scan();
+                
+                // 書き込むデータを作成
+                const link = `https://tkgeek.sakura.ne.jp/taggy/public/post.php?id=<?= htmlspecialchars($postId) ?>`;
+                const text = "このアイテムの思い出を見る";
 
+                // 書き込み処理
                 await ndef.write({
-                    records: [{
-                        recordType: 'text',
-                        data: dataInput.value
-                    }]
+                    records: [
+                        {
+                            recordType: 'text',
+                            data: text
+                        },
+                        {
+                            recordType: 'url',
+                            data: link
+                        }
+                    ]
                 });
 
-                statusDiv.textContent = 'Taggyタグに書き込みました！';
+                status.textContent = 'Taggyタグに書き込みました！';
             } catch (error) {
                 console.error('NFC書き込みエラー:', error);
-                statusDiv.textContent = `エラー: ${error.message}`;
+                status.textContent = `エラー: ${error.message}`;
             }
         } else {
-            statusDiv.textContent = 'このブラウザはWeb NFCに対応していません';
+            status.textContent = 'このブラウザはWeb NFCに対応していません';
         }
-    }
+    });
 </script>
 
 <?php include '../includes/footer.php'; ?>
