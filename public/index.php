@@ -12,3 +12,6 @@ include __DIR__ . '/../includes/header.php';
 <p>A place to share and preserve memories with NFC tags.</p>
 <a href="signup.php">Sign Up</a> | <a href="login.php">Login</a>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
+
+
+
