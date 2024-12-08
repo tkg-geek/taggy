@@ -8,7 +8,7 @@ if (isset($_SESSION['user_id'])) {
 
 include __DIR__ . '/../includes/header.php';
 ?>
-<h1>devtest3 Welcome to Taggy!</h1>
+<h1>devtest4 Welcome to Taggy!</h1>
 <p>A place to share and preserve memories with NFC tags.</p>
 <a href="signup.php">Sign Up</a> | <a href="login.php">Login</a>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
