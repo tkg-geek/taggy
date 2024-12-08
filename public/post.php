@@ -30,7 +30,7 @@ include '../includes/header.php';
 
 <!-- NFCタグ書き込みボタン -->
 <div>
-    <input type="hidden" id="nfcData" value="<?= "https://taggy.com/post.php?id=" . htmlspecialchars($post['id']) ?>">
+    <input type="hidden" id="nfcData" value="<?= "https://tkgeek.sakura.ne.jp/taggy/public/post.php?id=" . htmlspecialchars($post['id']) ?>">
     <button onclick="writeToNFCTag()">NFCタグに書き込む</button>
     <div id="status" style="color: green; margin-top: 10px;"></div>
 </div>
