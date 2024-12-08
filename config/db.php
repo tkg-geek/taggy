@@ -1,9 +1,20 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+use Dotenv\Dotenv;
+
+$envFile = '.env.development';  // デフォルトは開発環境用
+if (getenv('APP_ENV') === 'production') {
+    $envFile = '.env.production';
+}
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../', $envFile);
+$dotenv->load();
+
 function getDBConnection() {
-    $host = 'localhost';
-    $dbname = 'taggy';
-    $username = 'root'; // 適宜変更
-    $password = '';     // 適宜変更
+    $host = $_ENV['DB_HOST'];
+    $dbname = $_ENV['DB_NAME'];
+    $username = $_ENV['DB_USERNAME'];
+    $password = $_ENV['DB_PASSWORD'];
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -13,4 +24,3 @@ function getDBConnection() {
         die('Database connection failed: ' . $e->getMessage());
     }
 }
-?>

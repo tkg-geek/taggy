@@ -7,7 +7,7 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../src/auth.php';
 require_once __DIR__ . '/../src/post.php';
 
-// URLと対応するビューファイルを指定
+// ルーティング処理をここで全部まとめる
 $routes = [
     '/' => __DIR__ . '/../public/index.php',
     '/index.php' => __DIR__ . '/../public/index.php',
