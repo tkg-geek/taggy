@@ -19,12 +19,16 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 include '../includes/header.php';
 ?>
-<h2>My Posts</h2>
-<?php foreach ($posts as $post): ?>
-    <div>
-        <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
-        <p><?= htmlspecialchars($post['description']) ?></p>
-        <a href="post.php?id=<?= htmlspecialchars($post['id']) ?>">View Details</a>
-    </div>
-<?php endforeach; ?>
-<?php include '../includes/footer.php'; ?>
+<h2>My TAGGY 投稿一覧</h2>
+<div class="card-container">
+    <?php foreach ($posts as $post): ?>
+        <a href="post.php?id=<?= htmlspecialchars($post['id']) ?>" class="card">
+            <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
+            <div class="card-content">
+                <p><?= htmlspecialchars($post['description']) ?></p>
+            </div>
+        </a>
+    <?php endforeach; ?>
+</div>
+
+<!-- <?php include '../includes/footer.php'; ?> -->

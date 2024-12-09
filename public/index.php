@@ -12,6 +12,12 @@ if (isset($_SESSION['user_id'])) {
 
 include __DIR__ . '/../includes/header.php';
 ?>
+<!-- <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal-content">
+        <button id="close-modal" class="close-button">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+</div> -->
 
 <div class="snap-container">
     <section id="intro-section" class="snap-section">
@@ -42,3 +48,4 @@ include __DIR__ . '/../includes/header.php';
 </div>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
+<!-- <script src="public/assets/js/main.js"></script> -->

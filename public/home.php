@@ -14,14 +14,18 @@ if (!isset($_SESSION['user_id'])) {
 $posts = getPosts();
 include __DIR__ . '/../includes/header.php';
 ?>
-<h2>Home</h2>
+<h2>みんなのTAGGY 投稿一覧</h2>
 
-<?php foreach ($posts as $post): ?>
-    <div>
-    <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
-        <p><?= htmlspecialchars($post['description']) ?></p>
-        <p>Posted by: <?= htmlspecialchars($post['username']) ?></p>
-    </div>
-<?php endforeach; ?>
+<div class="card-container">
+    <?php foreach ($posts as $post): ?>
+        <div class="card">
+            <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
+            <div class="card-content">
+                <p><?= htmlspecialchars($post['description']) ?></p>
+                <p><strong>Posted by:</strong> <?= htmlspecialchars($post['username']) ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<!-- <?php include __DIR__ . '/../includes/footer.php'; ?> -->

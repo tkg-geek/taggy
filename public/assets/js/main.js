@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(html => {
                     document.getElementById("modal-body").innerHTML = html;
                     modalOverlay.classList.remove("hidden");
+                    attachFormListeners();
                 });
         });
     });
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(html => {
                     document.getElementById("modal-body").innerHTML = html;
                     modalOverlay.classList.remove("hidden");
+                    attachFormListeners();
                 });
         });
     });
@@ -39,4 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
             modalOverlay.classList.add("hidden");
         }
     });
+
+    // モーダル内のフォーム送信後にモーダルを閉じる
+    function attachFormListeners() {
+        const form = document.querySelector("#modal-body form");
+        if (form) {
+            form.addEventListener("submit", () => {
+                modalOverlay.classList.add("hidden");
+            });
+        }
+    }
 });

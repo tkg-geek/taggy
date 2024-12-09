@@ -18,12 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $image = $_FILES['image'];
 
-    // 画像が正しくアップロードされたかチェック
+    // 画像サイズ制限（4MB）
+    if ($image['size'] > 4 * 1024 * 1024) {
+        echo "アップロードする画像は4MB以下である必要があります。";
+        exit;
+    }
+
     if (isset($image) && $image['error'] === UPLOAD_ERR_OK) {
         $uploadDir = __DIR__ . '/../storage/uploads/';
         $imagePath = uniqid() . '_' . basename($image['name']);
 
-        // アップロードディレクトリが存在しない場合は作成
         if (!is_dir($uploadDir)) {
             if (!mkdir($uploadDir, 0755, true)) {
                 echo "アップロードディレクトリの作成に失敗しました！";
@@ -31,13 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // 書き込み権限があるか確認
         if (is_writable($uploadDir)) {
             if (move_uploaded_file($image['tmp_name'], $uploadDir . $imagePath)) {
                 createPost($userId, $imagePath, $description, $title);
                 header('Location: /taggy/public/home.php');
-                exit;
-
                 exit;
             } else {
                 echo "画像のアップロードに失敗しました！";
@@ -54,11 +55,32 @@ include __DIR__ . '/../includes/header.php';
 ?>
 
 <h2>New Post</h2>
+
 <form method="POST" enctype="multipart/form-data">
     <label>Title: <input type="text" name="title" required></label><br>
-    <label>Image: <input type="file" name="image" required></label><br>
+    <label>Image: <input type="file" id="imageInput" name="image" accept="image/*" required></label><br>
+    <span id="fileStatus" style="color: red;"></span><br>
     <label>Description: <textarea name="description" required></textarea></label><br>
     <button type="submit">Post</button>
 </form>
+
+<!-- クライアント側のサイズチェック -->
+<script>
+    const maxFileSizeMB = 4;  // 4MB制限
+
+    document.getElementById('imageInput').addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const status = document.getElementById('fileStatus');
+
+        if (file) {
+            if (file.size > maxFileSizeMB * 1024 * 1024) {
+                status.textContent = `投稿できる画像サイズは最大${maxFileSizeMB}MBまでです！`;
+                event.target.value = "";  // サイズ超過の場合、入力内容をクリア
+            } else {
+                status.textContent = '';
+            }
+        }
+    });
+</script>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
