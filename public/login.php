@@ -7,7 +7,7 @@ require_once __DIR__ . '/../src/auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (login($_POST['email'], $_POST['password'])) {
-        header('Location: ' . __DIR__ . '/../public/home.php');
+        header('Location: /taggy/public/home.php');
         exit;
     } else {
         $error = "Invalid email or password.";

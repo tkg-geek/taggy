@@ -56,7 +56,7 @@ if ($slug) {
                 
                 <h2><?= htmlspecialchars($post['title']) ?></h2>
                 <p class="description"><?= htmlspecialchars($post['description']) ?></p>
-                <p><strong>Posted by:</strong> <?= htmlspecialchars($post['username']) ?></p>
+                <p><strong>投稿者:</strong> <?= htmlspecialchars($post['username']) ?></p>
 
                 <!-- NFC書き込みボタンを表示するかチェック -->
                 <?php if ($isPostOwner): ?>

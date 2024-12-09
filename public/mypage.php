@@ -24,7 +24,7 @@ include '../includes/header.php';
         <a href="post.php?slug=<?= urlencode($post['slug']) ?>" class="card">
             <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
             <div class="card-content">
-                <p><?= htmlspecialchars($post['description']) ?></p>
+                <p><?= htmlspecialchars($post['title']) ?></p>
             </div>
         </a>
     <?php endforeach; ?>

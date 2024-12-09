@@ -7,7 +7,7 @@ require_once __DIR__ . '/../src/auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     signup($_POST['username'], $_POST['email'], $_POST['password']);
-    header('Location: ' . __DIR__ . '/../public/login.php');
+    header('Location: /taggy/public/login.php');
     exit;
 }
 

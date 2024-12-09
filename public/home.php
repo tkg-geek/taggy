@@ -60,8 +60,8 @@ include __DIR__ . '/../includes/header.php';
             <a href="post.php?slug=<?= urlencode($post['slug']) ?>" class="card">
                 <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
                 <div class="card-content">
-                    <p><?= htmlspecialchars($post['description']) ?></p>
-                    <p><strong>Posted by:</strong> <?= htmlspecialchars($post['username']) ?></p>
+                    <p><?= htmlspecialchars($post['title']) ?></p>
+                    <p><strong>投稿者:</strong> <?= htmlspecialchars($post['username']) ?></p>
                 </div>
             </a>
         <?php endif; ?>
