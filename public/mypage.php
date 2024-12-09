@@ -21,7 +21,7 @@ include '../includes/header.php';
 ?>
 <div class="card-container">
     <?php foreach ($posts as $post): ?>
-        <a href="post.php?id=<?= htmlspecialchars($post['id']) ?>" class="card">
+        <a href="post.php?slug=<?= urlencode($post['slug']) ?>" class="card">
             <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
             <div class="card-content">
                 <p><?= htmlspecialchars($post['description']) ?></p>

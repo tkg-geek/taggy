@@ -59,7 +59,7 @@ if ($slug) {
 
                 <!-- NFC書き込みボタンを表示するかチェック -->
                 <?php if ($isPostOwner): ?>
-                    <button id="writeNFCButton">Write to NFC Tag</button>
+                    <button id="writeNFCButton">TAGGYタグに書き込む</button>
                     <p id="nfcStatus" class="status-message"></p>
                 <?php endif; ?>
                 
@@ -70,7 +70,7 @@ if ($slug) {
             <?php if ($isPostOwner): ?>
                 document.getElementById('writeNFCButton').addEventListener('click', async () => {
                     const status = document.getElementById('nfcStatus');
-                    status.textContent = 'Taggyタグにタッチして下さい';
+                    status.textContent = 'TAGGYタグにタッチして下さい';
 
                     if ('NDEFReader' in window) {
                         try {
@@ -87,7 +87,7 @@ if ($slug) {
                                 ]
                             });
 
-                            status.textContent = 'Taggyタグに書き込みました！';
+                            status.textContent = 'TAGGYタグに書き込みました！';
                         } catch (error) {
                             console.error('NFC書き込みエラー:', error);
                             status.textContent = `エラー: ${error.message}`;

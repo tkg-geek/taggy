@@ -399,6 +399,9 @@ form button:hover {
     .post-info {
         width: 100%;
         margin-bottom: 16px;
+        display: flex;
+        justify-content: center; /* 中央配置 */
+        align-items: center;
     }
 }
 
@@ -408,10 +411,11 @@ form button:hover {
     padding: 10px;
 }
 .post-image img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 10px;
+    margin-right: 20px; //無理やり揃えてる
 }
 
 /* 右側の情報部分 */
