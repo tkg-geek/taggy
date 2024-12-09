@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $title = $_POST['title'];
     $image = $_FILES['image'];
+    $visibility = intval($_POST['visibility']);
 
     // 画像サイズ制限（4MB）
     if ($image['size'] > 4 * 1024 * 1024) {
@@ -37,7 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (is_writable($uploadDir)) {
             if (move_uploaded_file($image['tmp_name'], $uploadDir . $imagePath)) {
-                createPost($userId, $imagePath, $description, $title);
+                $slug = generateSlug($title);  // slug生成関数を追加
+                createPost($userId, $imagePath, $description, $title, $visibility, $slug);
+
                 header('Location: /taggy/public/home.php');
                 exit;
             } else {
@@ -60,13 +63,25 @@ include __DIR__ . '/../includes/header.php';
     <label>Title: <input type="text" name="title" required></label><br>
     <label>Image: <input type="file" id="imageInput" name="image" accept="image/*" required></label><br>
     <span id="fileStatus" style="color: red;"></span><br>
+
     <label>Description: <textarea name="description" required></textarea></label><br>
+
+    <!-- Visibility選択肢 -->
+    <label>Visibility:
+        <select name="visibility">
+            <option value="2">公開</option>
+            <option value="1">限定公開</option>
+            <option value="0">非公開</option>
+        </select>
+    </label><br>
+
     <button type="submit">Post</button>
 </form>
 
+
 <!-- クライアント側のサイズチェック -->
 <script>
-    const maxFileSizeMB = 4;  // 4MB制限
+    const maxFileSizeMB = 4; // 4MB制限
 
     document.getElementById('imageInput').addEventListener('change', (event) => {
         const file = event.target.files[0];
@@ -75,7 +90,7 @@ include __DIR__ . '/../includes/header.php';
         if (file) {
             if (file.size > maxFileSizeMB * 1024 * 1024) {
                 status.textContent = `投稿できる画像サイズは最大${maxFileSizeMB}MBまでです！`;
-                event.target.value = "";  // サイズ超過の場合、入力内容をクリア
+                event.target.value = ""; // サイズ超過の場合、入力内容をクリア
             } else {
                 status.textContent = '';
             }

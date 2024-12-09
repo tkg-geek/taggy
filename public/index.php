@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 session_start();
 
+// ログインユーザーがindex.phpにアセクスした時の処理（homeに飛ばすかどうか）
 if (isset($_SESSION['user_id'])) {
     header('Location: /taggy/public/home.php');
     exit;
