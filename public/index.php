@@ -6,9 +6,10 @@ error_reporting(E_ALL);
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header('Location: ' . __DIR__ . '/../public/home.php');
+    header('Location: /taggy/public/home.php');
     exit;
 }
+
 
 include __DIR__ . '/../includes/header.php';
 ?>

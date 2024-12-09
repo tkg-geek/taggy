@@ -17,13 +17,13 @@ include __DIR__ . '/../includes/header.php';
 
 <div class="card-container">
     <?php foreach ($posts as $post): ?>
-        <div class="card">
+        <a href="post.php?id=<?= htmlspecialchars($post['id']) ?>" class="card">
             <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
             <div class="card-content">
                 <p><?= htmlspecialchars($post['description']) ?></p>
                 <p><strong>Posted by:</strong> <?= htmlspecialchars($post['username']) ?></p>
             </div>
-        </div>
+        </a>
     <?php endforeach; ?>
 </div>
 
