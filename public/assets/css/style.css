@@ -384,12 +384,26 @@ form button:hover {
     border-radius: 10px;
     overflow: hidden;
     align-items: flex-start;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .post-container {
+        flex-direction: column;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    .post-image,
+    .post-info {
+        width: 100%;
+        margin-bottom: 16px;
+    }
 }
 
 /* 左側の画像部分 */
 .post-image {
-    flex: 1;
-    max-width: 400px;
+    max-width: 600px;
     padding: 10px;
 }
 .post-image img {
@@ -478,3 +492,4 @@ footer {
         font-size: 1rem;
     }
 }
+
