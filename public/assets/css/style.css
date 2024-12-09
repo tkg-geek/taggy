@@ -293,21 +293,27 @@ header .new-post-btn:hover {
     color: #fff;
     text-align: center;
     display: flex;
-    /* Flexboxを適用 */
     flex-direction: column;
-    /* 子要素を縦方向に並べる */
     justify-content: center;
-    /* 縦方向の中央揃え */
     align-items: center;
-    /* 横方向の中央揃え */
     text-align: center;
-    /* テキストを中央揃え */
 }
 
+/* デフォルトスタイル */
 .snap-section .section-content {
     background-color: var(--color-overlay);
     padding: 20px;
     border-radius: 8px;
+    width: 100%; 
+    max-width: 800px;
+}
+
+/* 画面幅が小さくなった場合に余白を追加 */
+@media screen and (max-width: 768px) {
+    .snap-section .section-content {
+        margin: 0 10px;
+        width: auto;
+    }
 }
 
 .snap-section h1 {
@@ -412,6 +418,17 @@ button, a.button {
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .card {
+        height: auto;
+        aspect-ratio: 1 / 1; /* カードを正方形に */
+    }
 }
 
 /* 画像全体に黒オーバーレイ */
