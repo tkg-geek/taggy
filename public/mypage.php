@@ -19,7 +19,6 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 include '../includes/header.php';
 ?>
-<h2>My TAGGY 投稿一覧</h2>
 <div class="card-container">
     <?php foreach ($posts as $post): ?>
         <a href="post.php?id=<?= htmlspecialchars($post['id']) ?>" class="card">

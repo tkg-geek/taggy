@@ -24,17 +24,22 @@ if (!$post) {
 
 include '../includes/header.php';
 ?>
-<h2>Post Details</h2>
-<div>
-    <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
-    <p><?= htmlspecialchars($post['description']) ?></p>
-    <p>Posted by: <?= htmlspecialchars($post['username']) ?></p>
-</div>
+<div class="post-container">
+    <!-- 左側の画像 -->
+    <div class="post-image">
+        <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
+    </div>
 
-<!-- NFC書き込みボタン -->
-<div>
-    <button id="writeNFCButton">Write to NFC Tag</button>
-    <p id="nfcStatus"> </p>
+    <!-- 右側の情報 -->
+    <div class="post-details">
+        <h2><?= htmlspecialchars($post['title']) ?></h2>
+        <p class="description"><?= htmlspecialchars($post['description']) ?></p>
+        <p><strong>Posted by:</strong> <?= htmlspecialchars($post['username']) ?></p>
+
+        <!-- NFC書き込みボタン -->
+        <button id="writeNFCButton">Write to NFC Tag</button>
+        <p id="nfcStatus" class="status-message"></p>
+    </div>
 </div>
 
 <script>

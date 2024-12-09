@@ -14,7 +14,6 @@ if (!isset($_SESSION['user_id'])) {
 $posts = getPosts();
 include __DIR__ . '/../includes/header.php';
 ?>
-<h2>みんなのTAGGY 投稿一覧</h2>
 
 <div class="card-container">
     <?php foreach ($posts as $post): ?>

@@ -46,7 +46,6 @@ h1, h2 {
 
 h2 {
     text-align: center;
-    margin: 40px 0; /* 上下に余白を追加 */
     font-weight: bold;
     color: var(--color-primary);
 }
@@ -234,9 +233,10 @@ button:hover, a.button:hover {
 ------------------------------ */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     padding: 0 20px;
+    margin-top: 30px;
 }
 
 .card {
@@ -300,8 +300,9 @@ button:hover, a.button:hover {
 }
 
 
-
-/* Form Container */
+/* ------------------------------
+ form
+------------------------------ */
 .form-container {
     background-color: #ffffff;
     padding: 30px;
@@ -309,17 +310,16 @@ button:hover, a.button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 20px auto;
-    text-align: center; /* コンテンツ全体を中央揃え */
+    text-align: center;
 }
 
 .form-container h2 {
     margin-bottom: 20px;
     font-size: 1.8rem;
     color: var(--color-secondary);
-    text-align: center; /* h2 自体の中央揃え */
+    text-align: center;
 }
 
-/* フォーム */
 form {
     /* background-color: #ffffff; */
     padding: 20px;
@@ -369,6 +369,87 @@ form button {
 
 form button:hover {
     background-color: var(--color-accent);
+}
+
+/* ------------------------------
+ ポストコンテナレイアウト
+------------------------------ */
+.post-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    align-items: flex-start;
+}
+
+/* 左側の画像部分 */
+.post-image {
+    flex: 1;
+    max-width: 400px;
+    padding: 10px;
+}
+.post-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 右側の情報部分 */
+.post-details {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* タイトル */
+.post-details h2 {
+    font-size: 2rem;
+    color: var(--color-secondary);
+    text-align: left;
+}
+
+/* 説明文 */
+.post-details .description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* NFCボタン */
+#writeNFCButton {
+    padding: 15px;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+#writeNFCButton:hover {
+    background-color: var(--color-secondary);
+}
+
+/* NFCステータスメッセージ */
+.status-message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #d9534f;
+}
+
+/* ボタンホバー効果 */
+#writeNFCButton:hover {
+    transform: scale(1.05);
 }
 
 /* ------------------------------
