@@ -11,7 +11,21 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+// ユーザー情報を取得してセッションに格納する
 $posts = getPosts();
+$username = null;
+
+foreach ($posts as $post) {
+    if ($post['user_id'] == $_SESSION['user_id']) {
+        $username = $post['username'];
+        break;
+    }
+}
+
+if ($username) {
+    $_SESSION['username'] = $username;
+}
+
 include __DIR__ . '/../includes/header.php';
 ?>
 

@@ -71,6 +71,7 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    padding: 15px 20px;
 }
 
 header .logo {
@@ -79,15 +80,9 @@ header .logo {
     color: var(--color-primary);
 }
 
-header nav {
-    display: flex;
-    gap: 15px;
-}
-
 header nav a {
     padding: 8px 12px;
     background-color: var(--color-secondary);
-    color: white;
     border-radius: 4px;
     font-size: 0.9rem;
     font-weight: bold;
@@ -96,6 +91,104 @@ header nav a {
 
 header nav a:hover {
     background-color: var(--color-accent);
+}
+
+/* ヘッダー検索 */
+/* ------------------------------
+ ヘッダー検索フォームのスタイル
+------------------------------ */
+header .search-form {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    border-radius: 20px;
+    width: 800px;
+    justify-content: center;
+    max-width: 50%;
+    margin: 0 auto;
+    box-shadow: 0 0 2px gray;
+}
+header .search-form input[type="text"] {
+    position: relative;
+    top: 5px;
+    padding: 8px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    width: 93%;
+    line-height: 1;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    outline: none;
+    background: transparent;
+}
+header .search-form input[type="text"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #999;
+}
+
+header .search-form button {
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* プロフィールドロップダウンメニューのスタイル */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.profile-dropdown .dropdown-content a {
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 10px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+.profile-dropdown .dropdown-content a:hover {
+    background-color: var(--color-accent);
+}
+
+.profile-dropdown #profile-btn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+/* ユーザープロフィールアイコン */
+.profile-dropdown .profile-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 /* ------------------------------
@@ -226,9 +319,9 @@ button, a.button {
     display: inline-block;
     padding: 10px 20px;
     background-color: var(--color-primary);
-    color: white;
+    /* color: white; */
     font-size: 1rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     border-radius: 5px;
     transition: background-color 0.3s;
 }
