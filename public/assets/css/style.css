@@ -197,7 +197,7 @@ header nav a:hover {
 }
 
 #sharing-section {
-    background-image: url('../images/sampl3.jpg');
+    background-image: url('../images/sample3.jpg');
 }
 
 #get-started-section {
@@ -220,6 +220,126 @@ button, a.button {
 
 button:hover, a.button:hover {
     background-color: var(--color-secondary);
+}
+
+/* メインコンテンツ */
+/* main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+} */
+
+/* カードレイアウト */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #333;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center; /* コンテンツ全体を中央揃え */
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    text-align: center; /* h2 自体の中央揃え */
+}
+
+/* フォーム */
+form {
+    /* background-color: #ffffff; */
+    padding: 20px;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 4px rgba(52, 152, 219, 0.3);
+}
+
+form button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: var(--color-accent);
 }
 
 /* ------------------------------

@@ -16,12 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include __DIR__ . '/../includes/header.php';
 ?>
-<h2>Login</h2>
-<form method="POST">
-    <label>Email: <input type="email" name="email" required></label><br>
-    <label>Password: <input type="password" name="password" required></label><br>
-    <button type="submit">Login</button>
-</form>
+<div class="container">
+    <div class="form-container">
+        <h2>Login</h2>
+        <form method="POST">
+            <label>Email: <input type="email" name="email" required></label><br>
+            <label>Password: <input type="password" name="password" required></label><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
 
 <?php if (isset($error)): ?>
     <p style="color:red;"><?= htmlspecialchars($error) ?></p>

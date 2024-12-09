@@ -28,4 +28,3 @@
         <?php endif; ?>
     </nav>
 </header>
-<main>
