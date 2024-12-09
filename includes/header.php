@@ -24,7 +24,7 @@ error_reporting(E_ALL);
 
     <header>
         <a href="<?php echo isset($_SESSION['user_id']) ? '/taggy/public/home.php' : '/taggy/public/index.php'; ?>">
-            <h1>TAGGY</h1>
+            <img src="/taggy/public/assets/images/taggy_logo.svg" alt="TAGGY Logo" class="logo" />
         </a>
 
         <!-- 検索バー：ログインユーザーのみ表示 -->
@@ -34,9 +34,11 @@ error_reporting(E_ALL);
                 <!-- <button type="submit">🔍</button> -->
             </form>
         <?php endif; ?>
-
+        <!-- 「新規投稿」ボタン追加 -->
+        <a href="new_post.php" class="new-post-btn">新規投稿</a>
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
+
                 <!-- ユーザープロフィールアイコンと名前表示 -->
                 <div class="profile-dropdown">
                     <a id="profile-btn" href="#">
@@ -48,9 +50,10 @@ error_reporting(E_ALL);
                         <span><?= $username ?></span>
                     </a>
                     <div class="dropdown-content">
-                        <a href="mypage.php">Mypage</a>
-                        <a href="profile.php">Profile</a>
-                        <a href="logout.php">Logout</a>
+                        <a href="new_post.php" class="new-post-btn">新規投稿</a>
+                        <a href="mypage.php">My TAGGY一覧</a>
+                        <a href="profile.php">ユーザー情報編集</a>
+                        <a href="logout.php">ログアウト</a>
                     </div>
                 </div>
             <?php else: ?>
