@@ -14,7 +14,8 @@
 <body>
 <header>
     <a href="<?php echo isset($_SESSION['user_id']) ? '/taggy/public/home.php' : '/taggy/public/index.php'; ?>">
-        <img src="/taggy/public/assets/images/taggy_logo.svg" alt="TAGGY Logo" class="">
+        <h1>TAGGY</h1>
+        <!-- <img src="/taggy/public/assets/images/taggy_logo.svg" alt="TAGGY Logo" class=""> -->
     </a>
     <nav>
         <?php if (isset($_SESSION['user_id'])): ?>

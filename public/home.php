@@ -18,7 +18,7 @@ include __DIR__ . '/../includes/header.php';
 
 <?php foreach ($posts as $post): ?>
     <div>
-        <img src="<?= __DIR__ . '/../storage/uploads/' . htmlspecialchars($post['image_path']) ?>" alt="Post Image">
+    <img src="../storage/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="Post Image">
         <p><?= htmlspecialchars($post['description']) ?></p>
         <p>Posted by: <?= htmlspecialchars($post['username']) ?></p>
     </div>

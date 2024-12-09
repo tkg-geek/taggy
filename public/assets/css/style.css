@@ -1,40 +1,68 @@
-/* 全体の基本スタイル */
-body {
-    font-family: 'Roboto', sans-serif;
+/* ------------------------------
+ リセットCSS
+------------------------------ */
+body, h1, h2, h3, p, a, ul, ol, li, img, figure, figcaption {
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+}
+body {
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
 }
-
-/* グローバルリンクスタイル */
 a {
-    color: #3498db;
     text-decoration: none;
-    transition: color 0.3s;
+    color: inherit;
 }
-a:hover {
-    color: #2980b9;
+ul, ol {
+    list-style: none;
 }
 
-/* ヘッダー */
+/* ------------------------------
+ CSS変数
+------------------------------ */
+:root {
+    --color-primary: #F99292; /* ピンク */
+    --color-secondary: #FFBC61; /* オレンジ */
+    --color-accent: #FFC679; /* 明るいオレンジ */
+    --color-background: #FFF4E0; /* 背景色 */
+    --color-text: #333; /* テキスト色 */
+    --color-overlay: rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------
+ 全体スタイル
+------------------------------ */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    color: var(--color-primary);
+}
+
+/* ------------------------------
+ ヘッダー
+------------------------------ */
 header {
     background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000;
 }
 
 header .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #3498db;
+    color: var(--color-primary);
 }
 
 header nav {
@@ -44,138 +72,179 @@ header nav {
 
 header nav a {
     padding: 8px 12px;
+    background-color: var(--color-secondary);
+    color: white;
     border-radius: 4px;
     font-size: 0.9rem;
     font-weight: bold;
-    color: #333;
-    background-color: #f1f1f1;
     transition: background-color 0.3s;
 }
-
 header nav a:hover {
-    background-color: #ddd;
+    background-color: var(--color-accent);
 }
 
-/* メインコンテンツ */
-main {
+/* ------------------------------
+ モーダルウインドウ
+------------------------------ */
+.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
     padding: 20px;
-    max-width: 1200px;
-    margin: auto;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
 }
 
-/* カードレイアウト */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 15px;
-}
-
-.card-title {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #333;
-}
-
-.card-description {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 10px;
-}
-
-/* フォーム */
-form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-form label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-form input,
-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-form input:focus,
-form textarea:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 4px rgba(52, 152, 219, 0.3);
-}
-
-form button {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #3498db;
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: bold;
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
     border: none;
-    border-radius: 4px;
+    font-size: 1.5em;
     cursor: pointer;
+}
+
+/* ------------------------------
+ スナップスクロールセクション
+------------------------------ */
+.snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.snap-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+.snap-section .section-content {
+    background-color: var(--color-overlay);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.snap-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.snap-section p {
+    font-size: 1.2rem;
+}
+
+/* 最初のセクションの特別なスタイル */
+#intro-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-image: url('public/assets/images/sample1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#intro-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+#intro-section p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+/* ------------------------------
+ 各セクションの背景画像
+------------------------------ */
+#intro-section {
+    background-image: url('../images/sample1.jpg');
+}
+
+#memory-section {
+    background-image: url('../images/sample2.jpg');
+}
+
+#sharing-section {
+    background-image: url('../images/sampl3.jpg');
+}
+
+#get-started-section {
+    background-image: url('../images/sample4.jpg');
+}
+
+/* ------------------------------
+ リンクボタン
+------------------------------ */
+button, a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-form button:hover {
-    background-color: #2980b9;
+button:hover, a.button:hover {
+    background-color: var(--color-secondary);
 }
 
-/* フッター */
+/* ------------------------------
+ フッター
+------------------------------ */
 footer {
-    background-color: #ffffff;
     text-align: center;
     padding: 15px;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    background-color: var(--color-secondary);
+    color: white;
     font-size: 0.8rem;
-    color: #999;
 }
 
-footer a {
-    color: #3498db;
-}
-
-/* レスポンシブデザイン */
+/* ------------------------------
+ レスポンシブデザイン
+------------------------------ */
 @media (max-width: 768px) {
     header nav {
         flex-direction: column;
         gap: 10px;
+    }
+    .snap-section h1 {
+        font-size: 2rem;
+    }
+    .snap-section p {
+        font-size: 1rem;
     }
 }
