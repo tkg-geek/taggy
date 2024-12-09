@@ -31,6 +31,22 @@ if ($requestUri === '/home.php' && !isset($_SESSION['user_id'])) {
     exit;
 }
 
+// 公開投稿へのアクセス制御チェック
+if (strpos($requestUri, '/post.php') === 0 && !isset($_SESSION['user_id'])) {
+    $slug = $_GET['slug'] ?? '';
+    $pdo = getDBConnection();
+    $stmt = $pdo->prepare("SELECT * FROM posts WHERE slug = :slug AND visibility = 2");
+    $stmt->execute([':slug' => $slug]);
+    $post = $stmt->fetch();
+
+    if ($post) {
+        include __DIR__ . '/../public/post.php';
+        exit;
+    } else {
+        header('Location: home.php');
+        exit;
+    }
+}
 
 // 対応するビューファイルを取得
 if (isset($routes[$requestUri])) {
