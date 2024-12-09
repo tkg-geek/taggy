@@ -82,21 +82,13 @@ header .logo {
 
 header nav a {
     padding: 8px 12px;
-    background-color: var(--color-secondary);
     border-radius: 4px;
     font-size: 0.9rem;
-    font-weight: bold;
     transition: background-color 0.3s;
 }
 
-header nav a:hover {
-    background-color: var(--color-accent);
-}
 
 /* ヘッダー検索 */
-/* ------------------------------
- ヘッダー検索フォームのスタイル
------------------------------- */
 header .search-form {
     height: 40px;
     display: flex;
@@ -164,11 +156,10 @@ header .search-form button {
     padding: 10px;
     display: block;
     text-align: center;
-    font-weight: bold;
 }
 
 .profile-dropdown .dropdown-content a:hover {
-    background-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 .profile-dropdown #profile-btn {
@@ -326,9 +317,9 @@ button, a.button {
     transition: background-color 0.3s;
 }
 
-button:hover, a.button:hover {
+/* button:hover, a.button:hover {
     background-color: var(--color-secondary);
-}
+} */
 
 /* ------------------------------
  カードレイアウト

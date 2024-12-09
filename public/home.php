@@ -26,11 +26,31 @@ if ($username) {
     $_SESSION['username'] = $username;
 }
 
+// 検索ワードの取得
+$keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+$filteredPosts = [];
+
+// 検索ワードがある場合にフィルタリング
+if ($keyword) {
+    foreach ($posts as $post) {
+        // キーワードがタイトル、説明、ユーザー名に含まれているかチェック
+        if (
+            stripos($post['title'], $keyword) !== false ||
+            stripos($post['description'], $keyword) !== false ||
+            stripos($post['username'], $keyword) !== false
+        ) {
+            $filteredPosts[] = $post;
+        }
+    }
+} else {
+    $filteredPosts = $posts;
+}
+
 include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="card-container">
-    <?php foreach ($posts as $post): ?>
+    <?php foreach ($filteredPosts as $post): ?>
         <?php
         if ($post['visibility'] == 2 ||
             ($post['visibility'] == 1 && isset($_GET['id'])) ||

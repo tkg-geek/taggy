@@ -27,11 +27,13 @@ error_reporting(E_ALL);
             <h1>TAGGY</h1>
         </a>
 
-        <!-- 検索バー -->
-        <form action="home.php" method="GET" class="search-form">
-            <input type="text" name="keyword" placeholder="Search for everyone's memories...">
-            <!-- <button type="submit">🔍</button> -->
-        </form>
+        <!-- 検索バー：ログインユーザーのみ表示 -->
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <form action="home.php" method="GET" class="search-form">
+                <input type="text" name="keyword" placeholder="Search for everyone's memories...">
+                <!-- <button type="submit">🔍</button> -->
+            </form>
+        <?php endif; ?>
 
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
@@ -50,7 +52,6 @@ error_reporting(E_ALL);
                         <a href="profile.php">Profile</a>
                         <a href="logout.php">Logout</a>
                     </div>
-                </div>
                 </div>
             <?php else: ?>
                 <a href="signup.php">Sign Up</a>
