@@ -77,6 +77,7 @@ header .logo {
     object-fit: cover;
     margin-right: 15px;
 }
+
 @media screen and (max-width: 768px) {
     header .logo {
         max-width: 90px;
@@ -89,7 +90,8 @@ header nav a {
     font-size: 0.9rem;
     transition: background-color 0.3s;
 }
-header nav a:hover{
+
+header nav a:hover {
     color: var(--color-accent);
 }
 
@@ -148,9 +150,10 @@ header .new-post-btn {
     align-self: center;
     margin-right: 15px;
 }
+
 @media screen and (max-width: 768px) {
     header .new-post-btn {
-    display: none;
+        display: none;
     }
 }
 
@@ -164,9 +167,11 @@ header .new-post-btn:hover {
     position: relative;
     display: inline-block;
 }
+
 @media (max-width: 768px) {
     .profile-dropdown span {
-        display: none; /* ユーザーネームを非表示 */
+        display: none;
+        /* ユーザーネームを非表示 */
     }
 }
 
@@ -200,6 +205,7 @@ header .new-post-btn:hover {
 .profile-dropdown .dropdown-content a.new-post-btn {
     display: none;
 }
+
 @media screen and (max-width:768px) {
     .profile-dropdown .dropdown-content a.new-post-btn {
         display: block;
@@ -286,6 +292,16 @@ header .new-post-btn:hover {
     position: relative;
     color: #fff;
     text-align: center;
+    display: flex;
+    /* Flexboxを適用 */
+    flex-direction: column;
+    /* 子要素を縦方向に並べる */
+    justify-content: center;
+    /* 縦方向の中央揃え */
+    align-items: center;
+    /* 横方向の中央揃え */
+    text-align: center;
+    /* テキストを中央揃え */
 }
 
 .snap-section .section-content {
@@ -303,30 +319,42 @@ header .new-post-btn:hover {
     font-size: 1.2rem;
 }
 
-/* 最初のセクションの特別なスタイル */
-#intro-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+/* ------------------------------
+ 各セクションレイアウト
+------------------------------ */
+/* CTAボタンの基本スタイル */
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--color-accent);
     color: white;
-    background-image: url('public/assets/images/sample1.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-#intro-section h1 {
-    font-size: 3rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 10px;
-    color: var(--color-primary);
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-#intro-section p {
-    font-size: 1.5rem;
-    font-weight: 300;
-    max-width: 600px;
+/* ホバーエフェクト */
+.cta-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-3px);
+}
+
+/* フォーカス時のスタイル */
+.cta-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 188, 97, 0.5);
+}
+
+/* 小さい画面向けのレスポンシブ調整 */
+@media (max-width: 768px) {
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
 
 /* ------------------------------
@@ -339,6 +367,7 @@ header .new-post-btn:hover {
 #memory-section {
     background-image: url('../images/sample4.jpg');
 }
+
 #get-started-section {
     background-image: url('../images/sample2.jpg');
 }
