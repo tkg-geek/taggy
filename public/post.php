@@ -78,6 +78,7 @@ if ($slug) {
                             await ndef.scan();
 
                             const link = `https://tkgeek.sakura.ne.jp/taggy/public/post.php?slug=<?= htmlspecialchars($slug) ?>`;
+                            
                             const text = "このアイテムの思い出を見る";
 
                             await ndef.write({

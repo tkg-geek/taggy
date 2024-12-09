@@ -415,7 +415,7 @@ form button:hover {
     height: auto;
     object-fit: cover;
     border-radius: 10px;
-    margin-right: 20px; //無理やり揃えてる
+    margin-right: 20px; /* 無理やり揃えてる */
 }
 
 /* 右側の情報部分 */
