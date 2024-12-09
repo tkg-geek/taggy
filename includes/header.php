@@ -57,8 +57,8 @@ error_reporting(E_ALL);
                     </div>
                 </div>
             <?php else: ?>
-                <a href="signup.php">Sign Up</a>
-                <a href="login.php">Login</a>
+                <a href="signup.php">新規登録</a>
+                <a href="login.php">ログイン</a>
             <?php endif; ?>
         </nav>
     </header>
