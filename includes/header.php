@@ -35,7 +35,9 @@ error_reporting(E_ALL);
             </form>
         <?php endif; ?>
         <!-- 「新規投稿」ボタン追加 -->
+        <?php if (isset($_SESSION['user_id'])): ?>
         <a href="new_post.php" class="new-post-btn">新規投稿</a>
+        <?php endif; ?>
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
 

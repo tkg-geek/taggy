@@ -25,15 +25,10 @@ ul, ol {
 ------------------------------ */
 :root {
     --color-primary: #F99292;
-    /* ピンク */
     --color-secondary: #FFBC61;
-    /* オレンジ */
     --color-accent: #FFC679;
-    /* 明るいオレンジ */
     --color-background: #FFF4E0;
-    /* 背景色 */
     --color-text: #333;
-    /* テキスト色 */
     --color-overlay: rgba(0, 0, 0, 0.5);
 }
 
@@ -94,6 +89,10 @@ header nav a {
     font-size: 0.9rem;
     transition: background-color 0.3s;
 }
+header nav a:hover{
+    color: var(--color-accent);
+}
+
 
 
 /* ヘッダー検索 */
@@ -338,15 +337,10 @@ header .new-post-btn:hover {
 }
 
 #memory-section {
-    background-image: url('../images/sample2.jpg');
-}
-
-#sharing-section {
-    background-image: url('../images/sample3.jpg');
-}
-
-#get-started-section {
     background-image: url('../images/sample4.jpg');
+}
+#get-started-section {
+    background-image: url('../images/sample2.jpg');
 }
 
 /* ------------------------------
@@ -452,7 +446,7 @@ button, a.button {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    margin: 20px auto;
+    margin: 50px auto;
     text-align: center;
 }
 

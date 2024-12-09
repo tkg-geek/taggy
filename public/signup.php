@@ -17,16 +17,16 @@ include __DIR__ . '/../includes/header.php';
     <div class="form-container">
         <h2>Sign Up</h2>
         <form method="POST">
-            <label for="username">Username:</label>
+            <label for="username">ユーザーネーム:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="password">Password:</label>
+            <label for="password">パスワード:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Sign Up</button>
+            <button type="submit">登録する</button>
         </form>
     </div>
 </div>

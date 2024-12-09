@@ -25,20 +25,14 @@ include __DIR__ . '/../includes/header.php';
     <section id="intro-section" class="snap-section">
         <div class="section-content">
             <h1>Welcome to TAGGY</h1>
-            <p>Discover and share memories with ease.</p>
-            <a href="signup.php" class="cta-button">Get Started</a>
+            <p>Share your memories effortlessly.</p>
+            <a href="signup.php" class="cta-button btn-primary">Get Started</a>
         </div>
     </section>
     <section id="memory-section" class="snap-section">
         <div class="section-content">
             <h1>Create Memories</h1>
             <p>Tag your favorite moments and keep them forever.</p>
-        </div>
-    </section>
-    <section id="sharing-section" class="snap-section">
-        <div class="section-content">
-            <h1>Easy Sharing</h1>
-            <p>Share your memories with your loved ones effortlessly.</p>
         </div>
     </section>
     <section id="get-started-section" class="snap-section">
