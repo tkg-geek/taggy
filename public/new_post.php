@@ -57,25 +57,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include __DIR__ . '/../includes/header.php';
 ?>
 
-<h2>New Post</h2>
+<h2>新規投稿</h2>
 
 <form method="POST" enctype="multipart/form-data">
-    <label>Title: <input type="text" name="title" required></label><br>
-    <label>Image: <input type="file" id="imageInput" name="image" accept="image/*" required></label><br>
+    <label>思い出のタイトル<input type="text" name="title" required></label><br>
+    <label>思い出の画像、またはタグを貼るモノの画像<input type="file" id="imageInput" name="image" accept="image/*" required></label><br>
     <span id="fileStatus" style="color: red;"></span><br>
 
-    <label>Description: <textarea name="description" required></textarea></label><br>
+    <label>思い出の説明<textarea name="description" required></textarea></label><br>
 
     <!-- Visibility選択肢 -->
-    <label>Visibility:
+    <label>公開設定:
         <select name="visibility">
-            <option value="2">公開</option>
-            <option value="1">限定公開</option>
-            <option value="0">非公開</option>
+            <option value="2">公開（一般ユーザーがアクセスできます）</option>
+            <option value="1">限定公開（URLを知っている人のみアクセスできます）</option>
+            <option value="0">非公開（自分の身がアクセスできます）</option>
         </select>
     </label><br>
 
-    <button type="submit">Post</button>
+    <div class="button-container">
+        <button type="submit" class="post-button">Post</button>
+    </div>
 </form>
 
 

@@ -53,6 +53,7 @@ if ($slug) {
 
             <!-- 右側の投稿情報 -->
             <div class="post-details">
+                
                 <h2><?= htmlspecialchars($post['title']) ?></h2>
                 <p class="description"><?= htmlspecialchars($post['description']) ?></p>
                 <p><strong>Posted by:</strong> <?= htmlspecialchars($post['username']) ?></p>
@@ -61,6 +62,7 @@ if ($slug) {
                 <?php if ($isPostOwner): ?>
                     <button id="writeNFCButton">TAGGYタグに書き込む</button>
                     <p id="nfcStatus" class="status-message"></p>
+                    <a href="edit_post.php?slug=<?= urlencode($slug) ?>" class="edit-button">編集する</a>
                 <?php endif; ?>
                 
             </div>
