@@ -14,7 +14,8 @@ if (!isset($_SESSION['user_id'])) {
 // POSTリクエストの場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_SESSION['user_id'];
-    $description = nl2br(htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8'));
+    $description = htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8');
+    $description = nl2br($description);
     $title = $_POST['title'];
     $title = $_POST['title'];
     $image = $_FILES['image'];
@@ -82,18 +83,18 @@ include __DIR__ . '/../includes/header.php';
     </div>
 </form>
 
-    <!-- Visibility選択肢 -->
-    <label>公開設定:
-        <select name="visibility">
-            <option value="2">公開（一般ユーザーがアクセスできます）</option>
-            <option value="1">限定公開（URLを知っている人のみアクセスできます）</option>
-            <option value="0">非公開（自分の身がアクセスできます）</option>
-        </select>
-    </label><br>
+<!-- Visibility選択肢 -->
+<label>公開設定:
+    <select name="visibility">
+        <option value="2">公開（一般ユーザーがアクセスできます）</option>
+        <option value="1">限定公開（URLを知っている人のみアクセスできます）</option>
+        <option value="0">非公開（自分の身がアクセスできます）</option>
+    </select>
+</label><br>
 
-    <div class="button-container">
-        <button type="submit" class="post-button">Post</button>
-    </div>
+<div class="button-container">
+    <button type="submit" class="post-button">Post</button>
+</div>
 </form>
 
 
