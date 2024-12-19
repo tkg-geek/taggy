@@ -55,7 +55,7 @@ if ($slug) {
             <div class="post-details">
                 
                 <h2><?= htmlspecialchars($post['title']) ?></h2>
-                <p class="description"><?= htmlspecialchars($post['description']) ?></p>
+                <p class="description"><?php echo nl2br(htmlspecialchars($description, ENT_QUOTES, 'UTF-8')); ?></p>
                 <p><strong>投稿者:</strong> <?= htmlspecialchars($post['username']) ?></p>
 
                 <!-- NFC書き込みボタンを表示するかチェック -->
