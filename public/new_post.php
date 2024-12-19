@@ -14,8 +14,8 @@ if (!isset($_SESSION['user_id'])) {
 // POSTリクエストの場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_SESSION['user_id'];
-    $description = htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8');
-    $description = nl2br($description);
+    $description = nl2br(htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8'));
+    echo $description; // 正しく改行付きで出力される
     $title = $_POST['title'];
     $title = $_POST['title'];
     $image = $_FILES['image'];
