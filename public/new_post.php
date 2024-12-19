@@ -14,7 +14,8 @@ if (!isset($_SESSION['user_id'])) {
 // POSTリクエストの場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_SESSION['user_id'];
-    $description = $_POST['description'];
+    $description = nl2br(htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8'));
+    $title = $_POST['title'];
     $title = $_POST['title'];
     $image = $_FILES['image'];
     $visibility = intval($_POST['visibility']);
@@ -64,7 +65,22 @@ include __DIR__ . '/../includes/header.php';
     <label>思い出の画像、またはタグを貼るモノの画像<input type="file" id="imageInput" name="image" accept="image/*" required></label><br>
     <span id="fileStatus" style="color: red;"></span><br>
 
-    <label>思い出の説明<textarea name="description" required></textarea></label><br>
+    <label>思い出の説明
+        <textarea name="description" required rows="6" style="height: 200px;"></textarea>
+    </label><br>
+
+    <label>公開設定:
+        <select name="visibility">
+            <option value="2">公開（一般ユーザーがアクセスできます）</option>
+            <option value="1">限定公開（URLを知っている人のみアクセスできます）</option>
+            <option value="0">非公開（自分のみがアクセスできます）</option>
+        </select>
+    </label><br>
+
+    <div class="button-container">
+        <button type="submit" class="post-button">Post</button>
+    </div>
+</form>
 
     <!-- Visibility選択肢 -->
     <label>公開設定:
